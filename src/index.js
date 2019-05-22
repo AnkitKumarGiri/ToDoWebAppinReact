@@ -44,7 +44,7 @@ class List extends React.Component {
 
     onKeyPress = (e) => {
         if(e.key === 'Enter'){
-            this.AddNewItem();
+            this.addNewItem();
         }
     }
     
@@ -89,6 +89,25 @@ class List extends React.Component {
         });
         this.onDeleteToDo(num);
     }
+
+    onClearToDo = () => {
+        this.setState({
+            todos:[{
+                text: null,
+                display: false,
+               }], 
+        })
+    }
+
+    onClearCompleted = () =>{
+        this.setState({
+            completed:[{
+                text: null,
+                display: false,
+               }], 
+        })
+    }
+
     render() {
 
         const todos = this.state.todos;
@@ -136,11 +155,17 @@ class List extends React.Component {
                     </div> 
                     {this.renderInputRow()}
                     <ul>{todo_list}</ul>
+                    <div className = "clear-list">
+                        <button onClick= {this.onClearToDo}>Clear todos</button>
+                    </div>
                 </div>
 
                 <div className = "done">
                     <h1> Completed List </h1>
                     <ul>{completed_list}</ul>
+                    <div className = "clear-list">
+                        <button onClick= {this.onClearCompleted}>Clear Completed</button>
+                    </div>
                 </div>
             </div>
         )
