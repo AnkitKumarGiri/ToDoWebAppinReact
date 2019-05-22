@@ -6,7 +6,7 @@ function ListItem(props){
             <input
                 type = "checkbox"
                 className = {props.itemType}
-                onClick= {props.onSelect}
+                onClick= { () => props.onSelect(props.keyval)}
                 checked = {props.checked}
             />
             <div className = "select-list-item"  >
@@ -16,7 +16,7 @@ function ListItem(props){
             <a
                 href = "#"
                 className = "delete-list-item"
-                onClick={props.onDelete}
+                onClick={ () => props.onDelete(props.keyval)}
             >X</a>
         </li>
     )

@@ -18,7 +18,11 @@ class List extends React.Component {
             display: false,
            }],
            input_box_text: '',
-        }
+        };
+        this.onSelectToDo = this.onSelectToDo.bind(this);
+        this.onDeleteToDo = this.onDeleteToDo.bind(this);
+        this.onSelectCompleted = this.onSelectCompleted.bind(this);
+        this.onDeleteCompleted = this.onDeleteCompleted.bind(this);
     }
 
     onInputChange = (e) => {
@@ -82,7 +86,7 @@ class List extends React.Component {
         });
     }
 
-    onSelectTodo(num){
+    onSelectToDo(num){
         const new_item = this.state.todos[num].text;
         if(new_item.length === 0)
             return;
@@ -143,8 +147,8 @@ class List extends React.Component {
                 <ListItem
                     keyval = {num}
                     value = {text}
-                    onSelect = { () => this.onSelectTodo(num) }
-                    onDelete = { () => this.onDeleteToDo(num) }
+                    onSelect = { this.onSelectToDo }
+                    onDelete = { this.onDeleteToDo }
                     classVal = {display}
                     checked = {checked}
                 />
@@ -161,8 +165,8 @@ class List extends React.Component {
                 <ListItem
                     keyval = {num}
                     value = {text}
-                    onSelect = { () => this.onSelectCompleted(num) }
-                    onDelete = { () => this.onDeleteCompleted(num) }
+                    onSelect = { this.onSelectCompleted }
+                    onDelete = { this.onDeleteCompleted }
                     classVal = {display}
                     checked = {checked}
                 />
