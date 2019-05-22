@@ -1,39 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-function ListItem(props){
-    return (
-        <li className = {props.classVal} key= {props.keyval} >
-            <div className = "select-list-item" onClick= {props.onSelect} >
-                {props.value}
-            </div>
-            <button
-                className = "delete-list-item"
-                onClick={props.onDelete}
-            >X</button>
-        </li>
-    )
-}
-
-function InputRow(props){
-    return (
-        <div className = "input-row">
-            <input 
-                id = "to-do-input"
-                type = "text"
-                placeholder = {props.placeholder}
-                maxLength = {props.maxLength}
-                onChange = {props.onChange}
-                onKeyPress = {props.onKeyPress}
-            ></input>
-            <button 
-                id="enter"
-                onClick = {props.onClick}
-            >Add</button>
-        </div>
-    )
-}
+import ListItem from './ListItem.js';
+import InputRow from './InputRow.js';
 
 class List extends React.Component {
 
@@ -48,18 +17,18 @@ class List extends React.Component {
             text: null,
             display: false,
            }],
-           buffer: '',
+           input_box_text: '',
         }
     }
 
     onInputChange = (e) => {
         this.setState({
-            buffer: e.target.value
+            input_box_text: e.target.value
         })
     }
 
-    AddNewItem = () => {
-        const  new_item = this.state.buffer;
+    addNewItem = () => {
+        const  new_item = this.state.input_box_text;
         if(new_item.length === 0) {
             return;
         }
@@ -85,7 +54,7 @@ class List extends React.Component {
                 maxLength = {27}
                 onChange = {this.onInputChange}
                 placeholder = {"New Item..."}
-                onClick = {this.AddNewItem}
+                onClick = {this.addNewItem}
                 onKeyPress = {this.onKeyPress}
             />
         );
