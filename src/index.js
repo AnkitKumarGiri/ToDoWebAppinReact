@@ -95,6 +95,20 @@ class List extends React.Component {
         });
         this.onDeleteToDo(num);
     }
+    
+    onSelectCompleted(num){
+        const new_item = this.state.completed[num].text;
+        if(new_item.length === 0)
+            return;
+        const todos = this.state.todos.slice();
+        this.setState({
+            todos: todos.concat([{
+                text: new_item,
+                display: true,
+            }]),
+        });
+        this.onDeleteCompleted(num);
+    }
 
     onClearToDo = () => {
         this.setState({
@@ -124,6 +138,7 @@ class List extends React.Component {
             // console.log(num);
             const text = item.text;
             const display = item.display ? 'show list' : 'hide list';
+            const checked = '';
             return (
                 <ListItem
                     keyval = {num}
@@ -131,6 +146,7 @@ class List extends React.Component {
                     onSelect = { () => this.onSelectTodo(num) }
                     onDelete = { () => this.onDeleteToDo(num) }
                     classVal = {display}
+                    checked = {checked}
                 />
             )
         });
@@ -140,15 +156,15 @@ class List extends React.Component {
             // console.log(num);
             const text = item.text;
             const display = item.display ? 'show list' : 'hide list';
-            const type = 'completed';
+            const checked = "checked";
             return (
                 <ListItem
                     keyval = {num}
                     value = {text}
-                    onSelect = { () => {return null} }
+                    onSelect = { () => this.onSelectCompleted(num) }
                     onDelete = { () => this.onDeleteCompleted(num) }
                     classVal = {display}
-                    itemType = {type}
+                    checked = {checked}
                 />
             )
         });

@@ -3,7 +3,12 @@ import React from 'react';
 function ListItem(props){
     return (
         <li className = {props.classVal} key= {props.keyval} >
-            <input type = "checkbox" className = {props.itemType} onClick= {props.onSelect}></input>
+            <input
+                type = "checkbox"
+                className = {props.itemType}
+                onClick= {props.onSelect}
+                checked = {props.checked}
+            />
             <div className = "select-list-item"  >
                 {props.value}
             </div>
