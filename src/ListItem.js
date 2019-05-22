@@ -3,13 +3,16 @@ import React from 'react';
 function ListItem(props){
     return (
         <li className = {props.classVal} key= {props.keyval} >
-            <div className = "select-list-item" onClick= {props.onSelect} >
+            <input type = "checkbox" className = {props.itemType} onClick= {props.onSelect}></input>
+            <div className = "select-list-item"  >
                 {props.value}
             </div>
-            <button
+            <div>   </div>
+            <a
+                href = "#"
                 className = "delete-list-item"
                 onClick={props.onDelete}
-            >X</button>
+            >X</a>
         </li>
     )
 }

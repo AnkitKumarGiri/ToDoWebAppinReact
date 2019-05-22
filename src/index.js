@@ -115,6 +115,7 @@ class List extends React.Component {
             // console.log(num);
             const text = item.text;
             const display = item.display ? 'show list' : 'hide list';
+            const type = 'completed';
             return (
                 <ListItem
                     keyval = {num}
@@ -122,6 +123,7 @@ class List extends React.Component {
                     onSelect = { () => {return null} }
                     onDelete = { () => this.onDeleteCompleted(num) }
                     classVal = {display}
+                    itemType = {type}
                 />
             )
         });
