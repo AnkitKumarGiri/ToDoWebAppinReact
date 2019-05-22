@@ -26,7 +26,11 @@ class List extends React.Component {
             input_box_text: e.target.value
         })
     }
-
+    refreshInput(){
+        this.setState({
+            input_box_text: '',
+        })
+    }
     addNewItem = () => {
         const  new_item = this.state.input_box_text;
         if(new_item.length === 0) {
@@ -40,6 +44,7 @@ class List extends React.Component {
                 display: true,
             }]),
         })
+        this.refreshInput();
     }
 
     onKeyPress = (e) => {
@@ -56,6 +61,7 @@ class List extends React.Component {
                 placeholder = {"New Item..."}
                 onClick = {this.addNewItem}
                 onKeyPress = {this.onKeyPress}
+                value = {this.state.input_box_text}
             />
         );
     }

@@ -10,6 +10,7 @@ function InputRow(props){
                 maxLength = {props.maxLength}
                 onChange = {props.onChange}
                 onKeyPress = {props.onKeyPress}
+                value = {props.value}
             ></input>
             <button 
                 id="enter"
