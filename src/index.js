@@ -27,7 +27,7 @@ class List extends React.Component {
 
     onInputChange = (e) => {
         this.setState({
-            input_box_text: e.target.value
+            input_box_text: e.target.value.toUpperCase()
         })
     }
     refreshInput(){
@@ -145,7 +145,8 @@ class List extends React.Component {
             const checked = '';
             return (
                 <ListItem
-                    keyval = {num}
+                    key = {num.toString()}
+                    index = {num}
                     value = {text}
                     onSelect = { this.onSelectToDo }
                     onDelete = { this.onDeleteToDo }
@@ -163,7 +164,8 @@ class List extends React.Component {
             const checked = "checked";
             return (
                 <ListItem
-                    keyval = {num}
+                    key = {num.toString()}
+                    index = {num}
                     value = {text}
                     onSelect = { this.onSelectCompleted }
                     onDelete = { this.onDeleteCompleted }

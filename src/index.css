@@ -5,6 +5,7 @@ body{
 .list{
     display: flex;
     flex-direction: row;
+    align-content: left;
 }
 
 .list-item{
